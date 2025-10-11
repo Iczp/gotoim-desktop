@@ -4,15 +4,15 @@ import Versions from '@/components/Versions.vue'
 import { env } from '@/config'
 
 const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
-const metaEnv = ref(import.meta.env)
-console.log('metaEnv', metaEnv)
+// const metaEnv = ref(import.meta.env)
+// console.log('metaEnv', metaEnv)
 console.log('env', env)
 const appId = ref(env.VITE_APP_ID)
-
 </script>
 
 <template>
-  metaEnv:{{ metaEnv }} appId:{{ appId }}
+  <!-- metaEnv:{{ metaEnv }} -->
+  appId:{{ appId }}
   <img alt="logo" class="logo" src="./assets/electron.svg" />
   <div class="creator">Powered by electron-vite</div>
   <div class="i-ph-anchor-simple-thin" />

@@ -69,7 +69,7 @@ export default defineConfig(({ command, mode }) => {
         // 方便非h5端调试
         // sourcemap: VITE_SHOW_SOURCEMAP === 'true', // 默认是false
         // target: 'es6',
-        target: 'es2020',
+        target: 'es2022',
         // 开发环境不用压缩
         minify: isDev ? false : 'esbuild',
       },

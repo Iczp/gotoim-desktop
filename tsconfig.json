@@ -1,6 +1,7 @@
 {
    "compilerOptions": {
-    "module": "es2022" // 或其他允许的值
+    "module": "es2022", // 或其他允许的值
+    "typeRoots": ["./node_modules/@types", "./src/renderer/src"]
   },
   "files": [],
   "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.web.json" }]
