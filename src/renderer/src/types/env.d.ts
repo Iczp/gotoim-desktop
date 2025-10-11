@@ -1,11 +1,41 @@
-// /// <reference types="vite/client" />
+/// <reference types="vite/client" />
 
 interface Env extends ImportMetaEnv {
   // NODE_ENV: 'development' | 'production' | 'test'
   readonly MAIN_VITE_SOME_KEY: string
-  readonly VITE_APP_ID?: string
-  readonly VITE_APP_TITLE?: string
+  /**
+   * appId
+   */
+  readonly VITE_APP_ID: string
+  /**
+   * appTitle
+   */
+  readonly VITE_APP_TITLE: string
+  /**
+   * some key
+   */
   readonly MAIN_VITE_SOME_KEY?: string
+  /**
+   * auth host
+   */
+  readonly VITE_AUTH_HOST: string
+  /**
+   * auth client id
+   */
+  readonly VITE_AUTH_CLIENT_ID: string
+  /**
+   * auth client secret
+   */
+  readonly VITE_AUTH_CLIENT_SECRET: string
+  /**
+   * chat host
+   */
+  readonly VITE_CHAT_HOST: string
+  /**
+   * chat websocket
+   */
+  readonly VITE_CHAT_WEBSOCKET: string
+
   [x: string]: unknown
 }
 

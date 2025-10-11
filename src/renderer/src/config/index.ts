@@ -1,5 +1,1 @@
-// import { Env } from '@/types/env.d'
-
-export const env: Env = {
-  ...import.meta.env,
-}
+export const env = import.meta.env as Env
