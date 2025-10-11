@@ -1,12 +1,10 @@
 import path, { resolve } from 'path'
-import { ConfigEnv, defineConfig, loadEnv } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Unocss from '@unocss/vite'
 
 // Vite config specifically for the renderer (web) build
 
-{
-}
 export default defineConfig((args) => {
   const { mode } = args
   console.log('args', args)
