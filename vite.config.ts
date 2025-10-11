@@ -10,15 +10,16 @@ import Unocss from '@unocss/vite'
 export default defineConfig((args) => {
   const { mode } = args
   console.log('args', args)
-
-  const env = (args as any)?.env ?? loadEnv(mode, path.resolve(process.cwd(), '.env'))
-
+  // loadEnv expects a directory path (envDir), not a file path
+  const envDir = process.cwd()
+  const env = (args as any)?.env ?? loadEnv(mode, process.cwd())
   console.log('vite 环境变量 env -> ', env)
   const isProd = mode === 'production'
   const isDev = mode === 'development'
   return {
     root: 'src/renderer',
     base: './',
+    envDir,
     resolve: {
       alias: {
         '@': path.join(process.cwd(), './src/renderer/src'),
@@ -47,6 +48,8 @@ export default defineConfig((args) => {
       port: 5175,
       strictPort: true,
     },
+    // ensure vite resolves env files from project root
+
     esbuild: {
       drop: isProd ? ['console', 'debugger'] : ['debugger'],
     },
