@@ -55,7 +55,7 @@ export default defineConfig((args) => {
       drop: isProd ? ['console', 'debugger'] : ['debugger'],
     },
     build: {
-      outDir: path.join(process.cwd(), `./dist/web-${isProd ? 'prod' : 'dev'}`),
+      outDir: path.join(process.cwd(), env.VITE_OUT_DIR || `./dist/web-${isProd ? 'prod' : 'dev'}`),
       // Allow emptying outDir even when it's outside the Vite project root.
       // Vite warns when outDir is not inside root; emptyOutDir:true overrides that.
       emptyOutDir: true,
