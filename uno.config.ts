@@ -9,4 +9,6 @@ export default defineConfig({
     }),
     presetWind3(),
   ],
+  rules: [],
+  theme: {},
 })
