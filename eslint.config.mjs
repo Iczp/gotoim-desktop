@@ -31,6 +31,15 @@ export default defineConfig([
   {
     files: ['**/*.{ts,mts,tsx,vue}'],
     rules: {
+      '@typescript-eslint/no-explicit-any': 'off', // 完全禁用
+      '@typescript-eslint/explicit-function-return-type': [
+        // 'warn', // 或 'error'
+        {
+          allowExpressions: true, // 允许表达式函数（如箭头函数）不声明返回类型
+          allowTypedFunctionExpressions: true, // 允许类型化的函数表达式
+          allowHigherOrderFunctions: true, // 允许高阶函数不声明返回类型
+        },
+      ],
       'vue/require-default-prop': 'off',
       'vue/multi-word-component-names': 'off',
       'vue/block-lang': ['error', { script: { lang: 'ts' } }],

@@ -2,17 +2,21 @@
 import { ref } from 'vue'
 import Versions from '@/components/Versions.vue'
 import { env } from '@/config'
-
-const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+import { isElectron } from './utils/platform'
+const ipcHandle = () => window.electron.ipcRenderer.send('ping')
 // const metaEnv = ref(import.meta.env)
 // console.log('metaEnv', metaEnv)
 console.log('env', env)
 const appId = ref(env.VITE_APP_ID)
 const appTitle = ref(env.VITE_APP_TITLE)
+
+console.log('window.electron', window.electron)
 </script>
 
 <template>
   <!-- metaEnv:{{ metaEnv }} -->
+
+  <div>isElectron:{{ isElectron }}</div>
   appId:{{ appId }} appTitle:{{ appTitle }}
   <img alt="logo" class="logo" src="./assets/electron.svg" />
   <div class="creator">Powered by electron-vite</div>
