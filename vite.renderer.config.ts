@@ -8,6 +8,7 @@ export default defineConfig({
   root: 'src/renderer',
   resolve: {
     alias: {
+      '@': resolve(__dirname, 'src/renderer/src'),
       '@renderer': resolve(__dirname, 'src/renderer/src'),
     },
   },

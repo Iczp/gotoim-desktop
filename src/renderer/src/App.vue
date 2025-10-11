@@ -1,10 +1,15 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import Versions from './components/Versions.vue'
+import { env } from '@renderer/config'
 
 const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+
+const appId = ref(env.appId)
 </script>
 
 <template>
+  appId:{{ appId }}
   <img alt="logo" class="logo" src="./assets/electron.svg" />
   <div class="creator">Powered by electron-vite</div>
   <div class="i-ph-anchor-simple-thin" />

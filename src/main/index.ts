@@ -51,22 +51,10 @@ function createWindow(): void {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  // Load environment variables for main process
-  // Prefer .env.development in dev, .env.production in production, fallback to .env
-  // const envFile = is.dev ? '.env.development' : '.env.production'
+  // console.log('process.env', process.env)
 
-  // console.log('envFile', envFile)
-  // dotenv.config({ path: envFile })
-
-  // Provide fallback ELECTRON_RENDERER_URL for dev if not provided
-  if (is.dev && !process.env.ELECTRON_RENDERER_URL) {
-    // merge with existing process.env in a type-safe manner
-    process.env = { ...process.env, ELECTRON_RENDERER_URL: 'http://localhost:5173/' }
-  }
-
-  console.log('process.env', process.env)
   // Set app user model id for windows
-  electronApp.setAppUserModelId('com.electron')
+  electronApp.setAppUserModelId('com.gotoim.app')
 
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.
