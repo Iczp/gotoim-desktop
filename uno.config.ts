@@ -1,4 +1,4 @@
-import { defineConfig, presetWind3 } from 'unocss'
+import { defineConfig, presetIcons, presetWind3 } from 'unocss'
 
 import presetAttributify from '@unocss/preset-attributify'
 
@@ -8,6 +8,7 @@ export default defineConfig({
       /* preset options */
     }),
     presetWind3(),
+    presetIcons(),
   ],
   rules: [],
   theme: {},

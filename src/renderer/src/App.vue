@@ -7,6 +7,13 @@ const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
 <template>
   <img alt="logo" class="logo" src="./assets/electron.svg" />
   <div class="creator">Powered by electron-vite</div>
+  <div class="i-ph-anchor-simple-thin" />
+  <!-- An orange alarm from Material Design Icons -->
+  <div class="i-mdi-alarm text-orange-400" />
+  <!-- A large Vue logo -->
+  <div class="i-logos-vue text-3xl" />
+  <!-- Sun in light mode, Moon in dark mode, from Carbon -->
+  <button class="i-carbon-sun dark:i-carbon-moon" />
   <div class="text">
     Build an Electron app with
     <span class="vue">Vue</span>
