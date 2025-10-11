@@ -17,5 +17,11 @@ export default defineConfig({
       },
     },
     plugins: [vue(), Unocss()],
+    // Vite dev server options for renderer during `electron-vite dev`
+    server: {
+      host: 'localhost',
+      port: 5175,
+      strictPort: true,
+    },
   },
 })
