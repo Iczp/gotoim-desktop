@@ -18,6 +18,7 @@ export default defineConfig((args) => {
   const isDev = mode === 'development'
   return {
     root: 'src/renderer',
+
     base: './',
     envDir,
     resolve: {
@@ -54,7 +55,10 @@ export default defineConfig((args) => {
       drop: isProd ? ['console', 'debugger'] : ['debugger'],
     },
     build: {
-      // outDir: `dist/${UNI_PLATFORM}-${mode === 'production' ? 'prod' : 'dev'}`, // h5-prod, h5-dev, mp-weixin-prod, mp-weixin-dev
+      outDir: path.join(process.cwd(), `./dist/web-${isProd ? 'prod' : 'dev'}`),
+      // Allow emptying outDir even when it's outside the Vite project root.
+      // Vite warns when outDir is not inside root; emptyOutDir:true overrides that.
+      emptyOutDir: true,
       sourcemap: false,
       // 方便非h5端调试
       // sourcemap: VITE_SHOW_SOURCEMAP === 'true', // 默认是false
