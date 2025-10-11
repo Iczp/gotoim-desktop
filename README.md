@@ -1,11 +1,8 @@
 # gotoim-desktop
 
-
-
 https://electron-vite.org
 
 An Electron application with Vue and TypeScript
-
 
 ## Recommended IDE Setup
 
