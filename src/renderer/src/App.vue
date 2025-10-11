@@ -16,7 +16,7 @@ console.log('window.electron', window.electron)
 <template>
   <!-- metaEnv:{{ metaEnv }} -->
 
-  <div>isElectron:{{ isElectron }}</div>
+  <div class="text-3xl">isElectron:{{ isElectron }}</div>
   appId:{{ appId }} appTitle:{{ appTitle }}
   <img alt="logo" class="logo" src="./assets/electron.svg" />
   <div class="creator">Powered by electron-vite</div>
