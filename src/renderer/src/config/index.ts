@@ -1,7 +1,5 @@
-export interface Env {
-  appId: string
-}
+// import { Env } from '@/types/env.d'
 
 export const env: Env = {
-  appId: import.meta.env.VITE_APP_ID,
+  ...import.meta.env,
 }
