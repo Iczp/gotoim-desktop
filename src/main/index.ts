@@ -1,9 +1,21 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
+// import * as dotenv from 'dotenv'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
 function createWindow(): void {
+  // In development, open the renderer URL in the default browser instead
+  // of creating an Electron BrowserWindow. This keeps main process running
+  // while using the system browser for UI.
+  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+    const devUrl = process.env['ELECTRON_RENDERER_URL'] as string
+    // open in default system browser
+    // shell.openExternal(devUrl)
+    console.log('devUrl', devUrl)
+    // return
+  }
+
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 900,
@@ -39,6 +51,20 @@ function createWindow(): void {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  // Load environment variables for main process
+  // Prefer .env.development in dev, .env.production in production, fallback to .env
+  // const envFile = is.dev ? '.env.development' : '.env.production'
+
+  // console.log('envFile', envFile)
+  // dotenv.config({ path: envFile })
+
+  // Provide fallback ELECTRON_RENDERER_URL for dev if not provided
+  if (is.dev && !process.env.ELECTRON_RENDERER_URL) {
+    // merge with existing process.env in a type-safe manner
+    process.env = { ...process.env, ELECTRON_RENDERER_URL: 'http://localhost:5173/' }
+  }
+
+  console.log('process.env', process.env)
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
 

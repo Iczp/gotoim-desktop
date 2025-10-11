@@ -3,25 +3,29 @@ import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
 import vue from '@vitejs/plugin-vue'
 import Unocss from '@unocss/vite'
 
-export default defineConfig({
-  main: {
-    plugins: [externalizeDepsPlugin()],
-  },
-  preload: {
-    plugins: [externalizeDepsPlugin()],
-  },
-  renderer: {
-    resolve: {
-      alias: {
-        '@renderer': resolve('src/renderer/src'),
+export default defineConfig(({ command, mode }) => {
+  console.log('command', command)
+  console.log('mode', mode)
+  return {
+    main: {
+      plugins: [externalizeDepsPlugin()],
+    },
+    preload: {
+      plugins: [externalizeDepsPlugin()],
+    },
+    renderer: {
+      resolve: {
+        alias: {
+          '@renderer': resolve('src/renderer/src'),
+        },
+      },
+      plugins: [vue(), Unocss()],
+      // Vite dev server options for renderer during `electron-vite dev`
+      server: {
+        host: 'localhost',
+        port: 5175,
+        strictPort: true,
       },
     },
-    plugins: [vue(), Unocss()],
-    // Vite dev server options for renderer during `electron-vite dev`
-    server: {
-      host: 'localhost',
-      port: 5175,
-      strictPort: true,
-    },
-  },
+  }
 })
