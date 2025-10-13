@@ -20,4 +20,10 @@ console.log('window.electron', window.electron)
   </nav>
 
   <router-view />
+  <div class="app-meta">
+    <div>isElectron: {{ isElectron }}</div>
+    <div>appId: {{ appId }}</div>
+    <div>appTitle: {{ appTitle }}</div>
+  </div>
+  <Versions />
 </template>

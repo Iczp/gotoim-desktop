@@ -4,5 +4,8 @@
     "typeRoots": ["./node_modules/@types", "./src/renderer/src"]
   },
   "files": [],
-  "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.web.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.web.json" }],
+  "vueCompilerOptions": {
+    "globalTypesPath": "./src/renderer/src/types/vue-global.d.ts"
+  }
 }
