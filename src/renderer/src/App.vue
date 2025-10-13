@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import Versions from '@/components/Versions.vue'
 import { env } from '@/config'
 import { isElectron } from './utils/platform'
@@ -13,7 +13,10 @@ const appId = ref(env.VITE_APP_ID)
 const appTitle = ref(env.VITE_APP_TITLE)
 
 console.log('window.electron', window.electron)
-const { locale } = useI18n<MessageSchema>()
+const { t, locale } = useI18n<MessageSchema>()
+
+// typed computed value that updates when locale changes
+const hello = computed(() => t('message.hello'))
 
 function setLang(l: 'zh' | 'en') {
   // cast because the i18n instance may use a different inferred locale literal type
@@ -31,7 +34,8 @@ function setLang(l: 'zh' | 'en') {
     <button @click="setLang('zh')">中文</button>
     <button @click="setLang('en')">English</button>
   </div>
-  <h1>{{ $t('message.hello') }}</h1>
+
+  <h1>{{ hello }} === {{ $t('message.hello') }}</h1>
 
   <router-view />
   <div class="app-meta">
