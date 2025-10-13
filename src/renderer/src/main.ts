@@ -7,6 +7,8 @@ import { createPinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router'
 import routes from './router'
 
+import VueVirtualScroller from 'vue-virtual-scroller'
+
 const app = createApp(App)
 
 const pinia = createPinia()
@@ -17,5 +19,6 @@ const router = createRouter({
 
 app.use(pinia)
 app.use(router)
+app.use(VueVirtualScroller)
 
 app.mount('#app')
