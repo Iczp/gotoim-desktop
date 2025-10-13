@@ -16,6 +16,8 @@ console.log('window.electron', window.electron)
 <template>
   <!-- metaEnv:{{ metaEnv }} -->
 
+  <a href="#/home/home" rel="noreferrer">Home</a>
+
   <div class="text-3xl">isElectron:{{ isElectron }}</div>
   appId:{{ appId }} appTitle:{{ appTitle }}
   <img alt="logo" class="logo" src="./assets/electron.svg" />
