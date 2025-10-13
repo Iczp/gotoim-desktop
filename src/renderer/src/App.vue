@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import Versions from '@/components/Versions.vue'
 import { env } from '@/config'
 import { isElectron } from './utils/platform'
-const ipcHandle = () => window.electron.ipcRenderer.send('ping')
+const ipcHandle = () => window.electron?.ipcRenderer.send('ping')
 // const metaEnv = ref(import.meta.env)
 // console.log('metaEnv', metaEnv)
 console.log('env', env)

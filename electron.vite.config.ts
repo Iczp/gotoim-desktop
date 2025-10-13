@@ -27,6 +27,11 @@ export default defineConfig((args) => {
   return {
     main: {
       plugins: [...plugins],
+      // build: {
+      //   rollupOptions: {
+      //     external: ['sqlite3'],
+      //   },
+      // },
     },
     preload: {
       plugins: [...plugins],
