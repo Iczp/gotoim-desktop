@@ -1,8 +1,8 @@
 # gotoim-desktop
 
-https://electron-vite.org
-
 An Electron application with Vue and TypeScript
+
+文档地址： https://electron-vite.org
 
 ## Recommended IDE Setup
 
@@ -25,6 +25,9 @@ $ pnpm dev
 ### Build
 
 ```bash
+# For web
+$ pnpm build:web
+
 # For windows
 $ pnpm build:win
 
@@ -33,4 +36,11 @@ $ pnpm build:mac
 
 # For Linux
 $ pnpm build:linux
+
+# 做安全检查（可选）：
+pnpm audit
+
+# 查看是否有可升级的依赖（如果你想消除 deprecated 警告）：
+pnpm outdated
+
 ```
