@@ -1,4 +1,4 @@
-import path, { resolve } from 'path'
+import path from 'path'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Unocss from '@unocss/vite'
@@ -16,14 +16,14 @@ export default defineConfig((args) => {
   const isDev = mode === 'development'
   return {
     root: 'src/renderer',
-
     base: './',
     envDir,
     resolve: {
       alias: {
+        '~': path.join(process.cwd(), './'),
+        // '~': resolve('src/renderer/src'),
         '@': path.join(process.cwd(), './src/renderer/src'),
-        '~': resolve('src/renderer/src'),
-        '@renderer': resolve('src/renderer/src'),
+        // '@renderer': resolve('src/renderer/src'),
       },
     },
     plugins: [

@@ -12,12 +12,15 @@
     "composite": true,
     "baseUrl": ".",
     "paths": {
+       "~/*": [
+        "./*"
+      ],
        "@/*": [
         "src/renderer/src/*"
       ],
-      "@renderer/*": [
-        "src/renderer/src/*"
-      ]
+      // "@renderer/*": [
+      //   "src/renderer/src/*"
+      // ]
     }
   }
 }
