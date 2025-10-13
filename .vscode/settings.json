@@ -8,5 +8,16 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.words": ["attributify", "gotoim", "Unocss", "VITE"]
+  "cSpell.words": ["attributify", "gotoim", "Unocss", "VITE"],
+
+  "i18n-ally.localesPaths": ["src/renderer/src/i18n/lang"],
+  "i18n-ally.enabledFrameworks": ["vue"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.displayLanguage": "auto",
+  "i18n-ally.preview.enabled": true,
+  "i18n-ally.completion.defaultLanguage": "zh",
+  // Expand include to common translation file extensions and nested folders
+  "i18n-ally.files.include": ["**/src/renderer/src/i18n/lang/**/*.{json,js,ts,yml,yaml}"],
+  // Ensure TS/JS files are parsed
+  "i18n-ally.resolveLanguageFromFolderName": true
 }
