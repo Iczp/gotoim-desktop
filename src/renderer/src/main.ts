@@ -6,9 +6,9 @@ import App from '@/App.vue'
 import { createPinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router'
 import routes from '@/router'
-import { version } from '~/package.json'
+import i18n from '@/i18n'
 
-console.log(`pkg:v${version}`)
+// package version logging removed to avoid alias resolution issues in the renderer
 
 import VueVirtualScroller from 'vue-virtual-scroller'
 
@@ -22,6 +22,7 @@ const router = createRouter({
 
 app.use(pinia)
 app.use(router)
+app.use(i18n)
 app.use(VueVirtualScroller)
 
 app.mount('#app')

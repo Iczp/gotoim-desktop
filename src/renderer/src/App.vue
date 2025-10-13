@@ -19,6 +19,8 @@ console.log('window.electron', window.electron)
     <router-link to="/login">Login</router-link>
   </nav>
 
+  <h1>{{ $t('message.hello') }}</h1>
+
   <router-view />
   <div class="app-meta">
     <div>isElectron: {{ isElectron }}</div>
