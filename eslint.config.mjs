@@ -33,7 +33,7 @@ export default defineConfig([
     rules: {
       '@typescript-eslint/no-explicit-any': 'off', // 完全禁用
       '@typescript-eslint/explicit-function-return-type': [
-        // 'warn', // 或 'error'
+        'off', // "off", 0, "warn", 1, "error", or 2.
         {
           allowExpressions: true, // 允许表达式函数（如箭头函数）不声明返回类型
           allowTypedFunctionExpressions: true, // 允许类型化的函数表达式
