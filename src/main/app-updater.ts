@@ -6,18 +6,22 @@ import { ipcMain } from 'electron'
 export const appUpdater = () => {
   // Auto updater: during development point to local test server
   try {
+    console.log('autoUpdater init env', process.env)
     if (is.dev) {
       autoUpdater.setFeedURL({ provider: 'generic', url: 'http://localhost:8080/auto-updates' })
     }
     autoUpdater.addAuthHeader('Bearer xxxxxx')
 
+    //  强制更新程序
     autoUpdater.forceDevUpdateConfig = true
 
-    //  强制更新程序
     autoUpdater.logger = logger
     // autoUpdater.logger.transports.file.level = 'info'
 
-    autoUpdater.checkForUpdatesAndNotify()
+    autoUpdater.checkForUpdatesAndNotify({
+      title: '更新可用',
+      body: '有新版本可用，即将下载更新。',
+    })
 
     autoUpdater.on('checking-for-update', () => console.log('checking-for-update'))
     autoUpdater.on('update-available', (info) => console.log('update-available', info))
