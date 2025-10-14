@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  update-server:
+    image: nginx:alpine
+    ports:
+      - "5050:80"
+    volumes:
+      - ./update-files:/usr/share/nginx/html
+    command: >
+      sh -c "echo 'Server started' &&
+      nginx -g 'daemon off;'"
+
+  test-client:
+    image: node:16-alpine
+    depends_on:
+      - update-server
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: >
+      sh -c "echo 'Waiting for update server...' &&
+      until curl -s http://update-server:80 >/dev/null; do sleep 1; done &&
+      echo 'Starting test...' &&
+      npm run test:update"
