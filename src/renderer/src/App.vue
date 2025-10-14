@@ -5,7 +5,13 @@ import { env } from '@/config'
 import { isElectron } from './utils/platform'
 import { useI18n } from 'vue-i18n'
 import type { MessageSchema } from '@/i18n'
+import { langs } from '@/i18n'
 
+// const env = ref(import.meta.env)
+// console.log('env', env)
+// if (isElectron) {
+//   console.log('electron', window.electron)
+//
 // const metaEnv = ref(import.meta.env)
 // console.log('metaEnv', metaEnv)
 console.log('env', env)
@@ -18,7 +24,7 @@ const { t, locale } = useI18n<MessageSchema>()
 // typed computed value that updates when locale changes
 const hello = computed(() => t('message.hello'))
 
-function setLang(l: 'zh' | 'en') {
+function setLang(l: any) {
   // cast because the i18n instance may use a different inferred locale literal type
   locale.value = l as unknown as typeof locale.value
 }
@@ -30,12 +36,18 @@ function setLang(l: 'zh' | 'en') {
     <router-link to="/login">Login</router-link>
   </nav>
 
-  <div class="lang-switch">
-    <button @click="setLang('zh')">中文</button>
-    <button @click="setLang('en')">English</button>
-  </div>
+  <ul class="lang-switch">
+    <li
+      v-for="item in langs"
+      :key="item.code"
+      :class="{ 'text-red-500': item.code == locale }"
+      @click="setLang(item.code)"
+    >
+      {{ item.text }}
+    </li>
+  </ul>
 
-  <h1>{{ hello }} === {{ $t('message.hello') }}</h1>
+  <h1>{{ hello }} === {{ t('message.hello') }}</h1>
 
   <router-view />
   <div class="app-meta">

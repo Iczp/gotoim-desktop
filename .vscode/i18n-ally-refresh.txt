@@ -1,0 +1,2 @@
+i18n Ally refresh trigger
+Timestamp: 2025-10-14T00:00:00Z
