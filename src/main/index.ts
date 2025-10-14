@@ -1,10 +1,10 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
-import { autoUpdater } from 'electron-updater'
-import logger from 'electron-log'
+
 // import * as dotenv from 'dotenv'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import { appUpdater } from './app-updater'
 
 function createWindow(): void {
   // In development, open the renderer URL in the default browser instead
@@ -46,43 +46,6 @@ function createWindow(): void {
     mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
-  }
-}
-
-const appUpdater = () => {
-  // Auto updater: during development point to local test server
-  try {
-    if (is.dev) {
-      autoUpdater.setFeedURL({ provider: 'generic', url: 'http://localhost:8080/auto-updates' })
-    }
-    autoUpdater.addAuthHeader('Bearer xxxxxx')
-
-    autoUpdater.forceDevUpdateConfig = true
-
-    //  强制更新程序
-    autoUpdater.logger = logger
-    // autoUpdater.logger.transports.file.level = 'info'
-
-    autoUpdater.checkForUpdatesAndNotify()
-
-    autoUpdater.on('checking-for-update', () => console.log('checking-for-update'))
-    autoUpdater.on('update-available', (info) => console.log('update-available', info))
-    autoUpdater.on('update-not-available', () => console.log('update-not-available'))
-    autoUpdater.on('update-downloaded', (info) => console.log('update-downloaded', info))
-    autoUpdater.on('error', (err) => console.error('auto-updater error', err))
-
-    // IPC channel to trigger check manually from renderer
-    ipcMain.handle('check-for-updates', async () => {
-      try {
-        await autoUpdater.checkForUpdates()
-        return { ok: true }
-      } catch (e) {
-        console.error('check-for-updates failed', e)
-        return { ok: false, error: String(e) }
-      }
-    })
-  } catch (e) {
-    console.warn('autoUpdater init failed', e)
   }
 }
 

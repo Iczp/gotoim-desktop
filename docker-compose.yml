@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./dev-app-update.yml:/usr/share/nginx/html/auto-updates/dev-app-update.yml:ro
-      - ./build/updates:/usr/share/nginx/html/auto-updates/files:ro
+      # - ./dev-app-update.yml:/usr/share/nginx/html/auto-updates/dev-app-update.yml:ro
+      - ./dist:/usr/share/nginx/html/auto-updates:ro
       - ./docker/nginx-default.conf:/etc/nginx/conf.d/default.conf:ro
     restart: unless-stopped
