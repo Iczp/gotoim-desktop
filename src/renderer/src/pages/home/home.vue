@@ -28,8 +28,6 @@
         <a target="_blank" rel="noreferrer" @click="ipcHandle">Send IPC</a>
       </div>
     </div>
-
-    <Versions />
   </div>
 </template>
 
@@ -37,7 +35,6 @@
 import { computed, ref } from 'vue'
 import { env } from '@/config'
 import { isElectron } from '@/utils/platform'
-import Versions from '@/components/Versions.vue'
 
 const props = defineProps({
   title: String,
