@@ -4,7 +4,7 @@
 
     <div class="text-3xl">isElectron:{{ isElectron }}</div>
     appId:{{ appId }} appTitle:{{ appTitle }}
-    <img alt="logo" class="logo" src="./assets/electron.svg" />
+    <img alt="logo" class="logo" src="@/assets/electron.svg" />
     <div class="creator">Powered by electron-vite</div>
     <div class="i-ph-anchor-simple-thin" />
     <!-- An orange alarm from Material Design Icons -->
