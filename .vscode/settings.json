@@ -19,5 +19,6 @@
   // Expand include to common translation file extensions and nested folders
   "i18n-ally.files.include": ["**/src/renderer/src/i18n/lang/**/*.{json,js,ts,yml,yaml}"],
   // Ensure TS/JS files are parsed
-  "i18n-ally.resolveLanguageFromFolderName": true
+  "i18n-ally.resolveLanguageFromFolderName": true,
+  "vue-i18n.i18nPaths": "dist\\win-unpacked\\locales,src\\renderer\\src\\i18n,src\\renderer\\src\\i18n\\lang"
 }

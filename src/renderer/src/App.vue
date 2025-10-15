@@ -20,9 +20,12 @@
           </li>
         </ul>
       </header>
+      <div class="flex text-3xl">isLoading: {{ isLoading }}</div>
     </template>
 
-    <router-view />
+    <router-view v-slot="{ Component }" @loading-status="updateLoading">
+      <component :is="Component" @loading-status="updateLoading" />
+    </router-view>
 
     <template #bottom>
       <footer class="flex flex-1 flex-center">
@@ -46,6 +49,7 @@ import { useI18n } from 'vue-i18n'
 import type { MessageSchema } from '@/i18n'
 import { langs } from '@/i18n'
 import Page from '@/components/Page.vue'
+import { useRouter } from 'vue-router'
 
 // const env = ref(import.meta.env)
 // console.log('env', env)
@@ -64,5 +68,40 @@ const { t, locale } = useI18n<MessageSchema>()
 function setLang(l: any) {
   // cast because the i18n instance may use a different inferred locale literal type
   locale.value = l as unknown as typeof locale.value
+}
+
+// #ifdef H5
+const channel = new BroadcastChannel('chat-tabs')
+channel.onmessage = (event) => {
+  console.log('BroadcastChannel event:', event)
+}
+// 监听 localStorage 事件
+window.addEventListener('storage', (event) => {
+  console.log('Storage event:', event)
+})
+setTimeout(() => {
+  channel.postMessage('im-active')
+  localStorage.setItem('app-launch-timestamp', Date.now().toString())
+  console.log('Set localStorage item "app-launch-timestamp"')
+}, 5000)
+
+channel.postMessage('im-active')
+// #endif
+
+const router = useRouter()
+const isLoading = ref(false)
+// 在路由导航开始时显示加载
+router.beforeEach((to, from, next) => {
+  isLoading.value = true
+  setTimeout(() => {
+    next()
+  }, 3000)
+})
+router.afterEach(() => {
+  isLoading.value = false // 路由跳转完成后隐藏加载
+})
+const updateLoading = (status) => {
+  console.log('updateLoading', status)
+  // isLoading.value = status
 }
 </script>
