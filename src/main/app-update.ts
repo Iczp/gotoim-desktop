@@ -1,7 +1,7 @@
 import { autoUpdater } from 'electron-updater'
-import logger from 'electron-log'
 import { is } from '@electron-toolkit/utils'
 import { ipcMain } from 'electron'
+import logger from './logger'
 
 export const appUpdater = () => {
   // Auto updater: during development point to local test server
