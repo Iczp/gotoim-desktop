@@ -8,7 +8,7 @@ export const appUpdater = () => {
   try {
     console.log('autoUpdater init env', process.env)
     if (is.dev) {
-      autoUpdater.setFeedURL({ provider: 'generic', url: 'http://localhost:8080/auto-updates' })
+      autoUpdater.setFeedURL({ provider: 'generic', url: 'http://localhost:7755/auto-updates' })
     }
     autoUpdater.addAuthHeader('Bearer xxxxxx')
 

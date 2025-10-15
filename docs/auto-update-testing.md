@@ -6,7 +6,7 @@
 
 - 已启动本地更新服务器（参见项目根的 `docker-compose.yml`，运行 `docker compose up -d`）。
 
-- 本地服务器地址： `http://localhost:8080/auto-updates`
+- 本地服务器地址： `http://localhost:7755/auto-updates`
 
 步骤
 
@@ -14,7 +14,7 @@
 
 ```yaml
 provider: generic
-url: http://localhost:8080/auto-updates
+url: http://localhost:7755/auto-updates
 updaterCacheDirName: gotoim-desktop-updater
 ```
 
