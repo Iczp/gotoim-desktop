@@ -32,6 +32,7 @@ export default defineConfig([
     files: ['**/*.{ts,mts,tsx,vue}'],
     rules: {
       '@typescript-eslint/no-explicit-any': 'off', // 完全禁用
+      '@typescript-eslint/no-unused-vars': ['warn'],
       '@typescript-eslint/explicit-function-return-type': [
         'off', // "off", 0, "warn", 1, "error", or 2.
         {

@@ -1,6 +1,5 @@
 <template>
   <div class="page flex flex-col">
-    <header></header>
     <slot name="top"></slot>
     <main class="flex flex-row flex-1">
       <slot name="left"></slot>

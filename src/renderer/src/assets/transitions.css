@@ -1,0 +1,144 @@
+/* src/assets/transitions.css */
+
+/*
+  通用过渡样式：
+  - 适用于所有基于 transform 和 opacity 的过渡。
+  - 设置 position: absolute; 和 width: 100%; 对于页面级过渡很重要，
+    它可以让新旧组件在过渡期间重叠，避免布局抖动。
+  - overflow: hidden; 通常需要添加到 App.vue 的父容器上，以隐藏溢出的内容。
+*/
+.page-transition-enter-active,
+.page-transition-leave-active {
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1); /* 通用过渡时间与缓动函数 */
+  position: absolute; /* 使新旧组件在过渡时重叠 */
+  width: 100%; /* 确保组件占据整个宽度 */
+  top: 0;
+  left: 0;
+  /* 确保 z-index 在过渡期间处理好层级关系，防止旧组件覆盖新组件 */
+  /* 可以通过 enter-active 和 leave-active 来控制 z-index */
+}
+
+/* ====== 1. 淡入淡出 (Fade) 效果 ====== */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* ====== 2. 左右滑动 (Slide) 效果 ====== */
+/* 2.1 向左滑动 (新页面从右侧滑入，旧页面向左侧滑出) */
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition:
+    transform 0.5s cubic-bezier(0.55, 0, 0.1, 1),
+    opacity 0.5s ease;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.slide-left-enter-from {
+  transform: translateX(100%); /* 新组件从右边开始 */
+  opacity: 0.8; /* 稍微透明 */
+}
+.slide-left-leave-to {
+  transform: translateX(-100%); /* 旧组件向左边离开 */
+  opacity: 0; /* 离开时完全透明 */
+}
+
+/* 2.2 向右滑动 (新页面从左侧滑入，旧页面向右侧滑出) */
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition:
+    transform 0.5s cubic-bezier(0.55, 0, 0.1, 1),
+    opacity 0.5s ease;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.slide-right-enter-from {
+  transform: translateX(-100%); /* 新组件从左边开始 */
+  opacity: 0.8;
+}
+.slide-right-leave-to {
+  transform: translateX(100%); /* 旧组件向右边离开 */
+  opacity: 0;
+}
+
+/* ====== 3. 缩放 (Zoom) 效果 ====== */
+/* 3.1 放大进入，缩小离开 */
+.zoom-in-out-enter-active,
+.zoom-in-out-leave-active {
+  transition:
+    transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    opacity 0.5s ease;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.zoom-in-out-enter-from {
+  opacity: 0;
+  transform: scale(0.8); /* 从缩小状态进入 */
+}
+.zoom-in-out-leave-to {
+  opacity: 0;
+  transform: scale(1.2); /* 缩小到放大状态离开 */
+}
+
+/* 3.2 缩小进入，放大离开 */
+.zoom-out-in-enter-active,
+.zoom-out-in-leave-active {
+  transition:
+    transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    opacity 0.5s ease;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.zoom-out-in-enter-from {
+  opacity: 0;
+  transform: scale(1.2); /* 从放大状态进入 */
+}
+.zoom-out-in-leave-to {
+  opacity: 0;
+  transform: scale(0.8); /* 放大到缩小状态离开 */
+}
+
+/* ====== 4. 底部弹出 (Slide-up) 效果 ====== */
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition:
+    transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
+    opacity 0.5s ease;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(100%); /* 从底部进入 */
+}
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(0); /* 保持不动或向下一点点离开，具体看需求 */
+}
+/* 如果是想新页面从底部完全覆盖上来，旧页面直接消失，那 leave-to 可以不设置 transform 或 opacity */
+/* 或者让旧页面向上 translateY(-100%) 离开 */
+
+/* 确保 App.vue 的父容器具有 relative 定位和 overflow: hidden */
+/* 通常 #app 或其最近的定位父元素需要这些样式 */
+/* 这部分样式通常在 App.vue 的 <style> 中定义，或者在全局基础 CSS 中 */
+/*
+#app {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+*/
