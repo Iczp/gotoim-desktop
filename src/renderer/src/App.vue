@@ -96,9 +96,8 @@ channel.postMessage('im-active')
 
 const router = useRouter()
 const isLoading = ref(false)
-
 // 在路由导航开始时显示加载
-router.beforeEach((to, from, next) => {
+router.beforeEach((_, __, next) => {
   isLoading.value = true
   next()
 })

@@ -48,6 +48,12 @@ importers:
       '@iconify/json':
         specifier: ^2.2.395
         version: 2.2.395
+      '@types/electron-builder':
+        specifier: ^2.8.2
+        version: 2.8.2(electron-builder-squirrel-windows@25.1.8)
+      '@types/js-yaml':
+        specifier: ^4.0.9
+        version: 4.0.9
       '@types/node':
         specifier: ^22.18.10
         version: 22.18.10
@@ -788,6 +794,10 @@ packages:
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
 
+  '@types/electron-builder@2.8.2':
+    resolution: {integrity: sha512-9Q3xeI1rT9slqTUKF4yYSQfYMSHy7TAuEMxuLl41Rh1itZGxwIMlR+YvUmlvnbKbVeSoLPM+CLAehz5mpYmydg==}
+    deprecated: This is a stub types definition. electron-builder provides its own type definitions, so you do not need this installed.
+
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
@@ -796,6 +806,9 @@ packages:
 
   '@types/http-cache-semantics@4.0.4':
     resolution: {integrity: sha512-1m0bIFVc7eJWyve9S0RnuRgcQqF/Xd5QsUZAZeQFr1Q3/p9JWoQQEqmVy+DPTNpGXwhgIetAoYF8JSc33q29QA==}
+
+  '@types/js-yaml@4.0.9':
+    resolution: {integrity: sha512-k4MGaQl5TGo/iipqb2UDG2UwjXziSWkh0uysQelTlJpX1qGlpUZYm8PnO4DxG1qBomtJUdYJ6qR6xdIah10JLg==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -3749,6 +3762,14 @@ snapshots:
     dependencies:
       '@types/ms': 2.1.0
 
+  '@types/electron-builder@2.8.2(electron-builder-squirrel-windows@25.1.8)':
+    dependencies:
+      electron-builder: 25.1.8(electron-builder-squirrel-windows@25.1.8)
+    transitivePeerDependencies:
+      - bluebird
+      - electron-builder-squirrel-windows
+      - supports-color
+
   '@types/estree@1.0.8': {}
 
   '@types/fs-extra@9.0.13':
@@ -3756,6 +3777,8 @@ snapshots:
       '@types/node': 22.18.10
 
   '@types/http-cache-semantics@4.0.4': {}
+
+  '@types/js-yaml@4.0.9': {}
 
   '@types/json-schema@7.0.15': {}
 
