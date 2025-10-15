@@ -1,7 +1,7 @@
 {
   "name": "gotoim-desktop",
   "productName": "Goto IM",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "An Electron application with Vue and TypeScript",
   "main": "./out/main/index.js",
   "author": "1000@intry.cn",

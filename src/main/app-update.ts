@@ -26,7 +26,16 @@ export const appUpdater = () => {
     autoUpdater.on('checking-for-update', () => console.log('checking-for-update'))
     autoUpdater.on('update-available', (info) => console.log('update-available', info))
     autoUpdater.on('update-not-available', () => console.log('update-not-available'))
-    autoUpdater.on('update-downloaded', (info) => console.log('update-downloaded', info))
+    autoUpdater.on('update-downloaded', (info) => {
+      console.log('update-downloaded', info)
+      if (is.dev) {
+        logger.warn('dev mode, skip auto-update')
+        console.warn('dev mode, skip auto-update')
+      } else {
+        console.log('autoUpdater.quitAndInstall()')
+        autoUpdater.quitAndInstall()
+      }
+    })
     autoUpdater.on('error', (err) => console.error('auto-updater error', err))
 
     // IPC channel to trigger check manually from renderer

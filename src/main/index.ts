@@ -4,7 +4,7 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
-import { appUpdater } from './app-updater'
+import { appUpdater } from './app-update'
 
 function createWindow(): void {
   // In development, open the renderer URL in the default browser instead
